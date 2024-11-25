@@ -14,12 +14,10 @@
         </div>
     </header>
 
-    <!-- Main Content Section -->
     <main class="container mx-auto mt-6">
-        @yield('content') <!-- Content will be injected here -->
+        @yield('content')
     </main>
 
-    <!-- Footer Section -->
     <footer class="bg-slate-600 text-slate-900 py-4 mt-12 fixed bottom-0 w-full">
         <div class="container mx-auto text-center">
             <p>&copy; {{ date('Y') }} XYShop. All rights reserved.</p>

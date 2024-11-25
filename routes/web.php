@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 
 // Route::resource('auth', ShopkeepersController::class);
+Route::get('/',[ ProductsController::class, 'index']);
 Route::resource('products', ProductsController::class);
 Route::resource('product-out', ProductOutController::class);
 Route::resource('product-in', ProductInController::class);
