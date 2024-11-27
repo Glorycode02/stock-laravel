@@ -20,7 +20,7 @@
 @endif
 
 <div id="loader" class="loader"></div>
-<div class="flex justify-center bg-slate-900 max-h-80 overflow-auto flex-col items-center gap-5">
+<div class="flex justify-center max-h-80 overflow-auto flex-col items-center gap-5">
     <table class="border border-slate-900 border-separate rounded-md w-1/2 text-center shadow-xl">
         <thead>
             <tr>

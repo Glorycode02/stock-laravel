@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Page Title' }}</title>
+    <style>
+        @media print {
+            table, th, td {
+                border: 1px solid black;
+            }
+            .nav,#print-btn{
+                display: none;
+            }
+        }
+    </style>
+    @vite('resources/css/app.css')
 </head>
 <body class="bg-white">
     @if (session()->exists('loginId'))
@@ -22,11 +33,11 @@
     </main>
     @endif
 
-    <footer class="bg-slate-600 text-slate-900 py-4 mt-12 fixed bottom-0 w-full">
+    <footer class=" text-slate-900 py-4 mt-12 fixed bottom-0 w-full">
         <div class="container mx-auto text-center">
             <p>&copy; {{ date('Y') }} XYShop. All rights reserved.</p>
         </div>
     </footer>
-
+    @vite('resources/js/app.js')
 </body>
 </html>

@@ -19,9 +19,9 @@
     <a href="{{route("product-in.create")}}" class="p-2 bg-gray-800 rounded-md text-white">Stock In</a>
     <h1 class="text-slate-950 font-bold">Stock In List</h1>
 </div>
-<div class="flex justify-center bg-slate-900 max-h-80 overflow-auto items-center flex-col gap-5 mt-5">
+<div class="flex justify-center max-h-80 overflow-auto items-center flex-col gap-5 mt-5">
 
-    <table class="border border-slate-900 bg-slate-900 border-separate rounded-md w-full text-center shadow-xl">
+    <table class="border border-slate-900 border-separate rounded-md w-full text-center shadow-xl">
         <thead>
             <tr>
                 <th>Product Code</th>

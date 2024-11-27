@@ -1,10 +1,10 @@
-<nav class="bg-gray-800 p-4">
+<nav class="bg-gray-800 p-4 nav">
     <div class="container mx-auto px-5 flex justify-between">
 
         <a href="/" class="text-white font-bold text-lg">XY shop</a>
 
         <div class="flex space-x-4">
-            <a href="{{ route('products.index') }}" class="text-white hover:border-b border-white px-3 py-2 focus:border-b-2">Products</a>
+            <a href="{{ route('products.index') }}" class="text-white hover:bg-gray-700 px-3 py-2 rounded-md">Products</a>
             <a href="{{ route('product-in.index') }}" class="text-white hover:bg-gray-700 px-3 py-2 rounded-md">Stock In</a>
             <a href="{{ route('product-out.index') }}" class="text-white hover:bg-gray-700 px-3 py-2 rounded-md">Stock Out</a>
             <a href="{{ route('stock-report.index') }}" class="text-white hover:bg-gray-700 px-3 py-2 rounded-md">Report</a>

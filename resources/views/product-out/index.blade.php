@@ -20,9 +20,9 @@
     <h1 class="text-slate-950 font-bold">Stock Out List</h1>
 </div>
 
-<div class="flex justify-center bg-slate-900 max-h-80 overflow-auto items-center flex-col gap-5 mt-5">
+<div class="flex justify-center  max-h-80 overflow-auto items-center flex-col gap-5 mt-5">
 
-    <table class="border border-slate-900 bg-slate-900 border-separate rounded-md w-full text-center shadow-xl">
+    <table class="border border-slate-900 border-separate rounded-md w-full text-center shadow-2xl">
         <thead>
             <tr>
                 <th>Product Code</th>

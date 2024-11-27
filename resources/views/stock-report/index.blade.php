@@ -16,12 +16,12 @@
                 </select>
             </div>
         </form>
-        <button id="print-btn" onclick="printer()" class="p-2 bg-green-500 text-white rounded-md">Print</button>
+        <button id="print-btn" onclick="window.print()" class="p-2 bg-green-500 text-white rounded-md">Print</button>
     </div>
 
-    <div class="flex justify-center bg-slate-900 max-h-80 overflow-auto items-center flex-col gap-5 mt-5">
+    <div class="flex justify-center max-h-80 overflow-auto items-center flex-col gap-5 mt-5">
 
-        <table id="table" class="border border-slate-900 bg-slate-900 border-separate rounded-md w-full text-center shadow-xl">
+        <table id="table" class="border border-slate-900 rounded-md border-collapse w-full text-center shadow-xl">
             <thead>
                 <tr>
                     <th>Product Code</th>
@@ -49,33 +49,4 @@
         </table>
     </div>
 </div>
-<script>
-    function printer() {
-        const printContent = document.getElementById("table").innerHTML;
-        const originalContent = document.body.innerHTML;
-
-        // Add print-specific styles
-        const styledContent = `
-        <style>
-            @media print {
-                table, th, td {
-                    border: 1px solid black;
-                    border-collapse: collapse;
-                    padding: 8px;
-                    text-align: left;
-                }
-            }
-        </style>
-        ${printContent}
-    `;
-
-        document.body.innerHTML = styledContent;
-        window.print();
-        
-        document.body.innerHTML = originalContent;
-        location.reload();
-    
-    }
-  
-</script>
 @endsection
