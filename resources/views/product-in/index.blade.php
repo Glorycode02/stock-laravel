@@ -15,9 +15,9 @@
 @endif
 <div id="loader" class="loader"></div>
 
-<div class="flex justify-between w-80 flex-row-reverse">
-    <h1 class="text-slate-950 font-bold">Product In - Stock List</h1>
-    <a href="{{route("product-in.create")}}" class="p-2 bg-gray-800 rounded-md text-white">New Product</a>
+<div class="flex w-full gap-5">
+    <a href="{{route("product-in.create")}}" class="p-2 bg-gray-800 rounded-md text-white">Stock In</a>
+    <h1 class="text-slate-950 font-bold">Stock In List</h1>
 </div>
 <div class="flex justify-center bg-slate-900 max-h-80 overflow-auto items-center flex-col gap-5 mt-5">
 

@@ -4,7 +4,9 @@
 
 @section('content')
 
-<h1 class="text-center font-bold">Product  - Stock Out List</h1>
+{{-- <div class="flex justify-between w-80 flex-row-reverse">
+    <h1 class="text-slate-950 font-bold">Product Out - Stock Out List</h1>
+</div> --}}
 
 @if (session('success'))
 <div class="text-center text-green-600 font-bold">
@@ -13,8 +15,9 @@
 
 <div id="loader" class="loader"></div>
 
-<div class="flex justify-between w-full flex-row">
-    <a href="{{route("product-out.create")}}" class="p-2 bg-gray-800 rounded-md text-white">Add Product Out</a>
+<div class="flex gap-5 w-full flex-row">
+    <a href="{{route("product-out.create")}}" class="p-2 bg-gray-800 rounded-md text-white">Stock Out</a>
+    <h1 class="text-slate-950 font-bold">Stock Out List</h1>
 </div>
 
 <div class="flex justify-center bg-slate-900 max-h-80 overflow-auto items-center flex-col gap-5 mt-5">

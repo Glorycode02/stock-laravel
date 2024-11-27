@@ -3,7 +3,7 @@
 @section('content')
 <div class="flex justify-between w-60 flex-row-reverse">
     <h1 class="text-slate-950 font-bold">Products</h1>
-    <a href="{{route("products.create")}}" class="p-2 bg-gray-800 rounded-md text-white">Add product</a>
+    <a href="{{route("products.create")}}" class="p-2 bg-gray-800 rounded-md text-white">New Product</a>
 </div>
 @if ($errors->any())
 <div class="text-center text-red-600 font-bold">>
