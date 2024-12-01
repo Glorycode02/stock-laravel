@@ -5,16 +5,15 @@
         <h1 class="text-slate-900 font-bold">XYShop-Signin</h1>
         <form action="{{route('loginUser')}}" method="post" class="flex flex-col items-center border border-slate-900 shadow-md rounded-md p-10 w-1/3 gap-4">
             @if (session('success'))
-            <div class="alert alert-success">
+            <div class="alert-success">
                 {{ session('success') }}
             </div>
-            @endif
-            @if (session('fail'))
-            <div class="alert alert-success">
+            @elseif (session('fail'))
+            <div class="alert-danger">
                 {{ session('fail') }}
             </div>
             @endif
-            
+
             @csrf
             <div class="self-start flex gap-2 w-full">
                 <label for="">UserName:</label>

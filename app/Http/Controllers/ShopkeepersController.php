@@ -32,13 +32,15 @@ class ShopkeepersController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
-            "UserName" => ["required", "string", "unique:shopkeepers"],
+            "UserName" => ["required", "string",],
             "Password" => ["required", "string", "min:5", "max:8"],
             "Cpass" => ["required", "string", "min:5", "max:8"]
         ]);
+        if(Shopkeepers::where("UserName", "=", $request->UserName)->first()) return back()->with("fail", "Username already exist?");
         if($request->Password != $request->Cpass) return back()->with("fail", "Password do not match?");
-        // dd($request);
+        dd($request);
         $user = Shopkeepers::create([
             "UserName" => $request->UserName,
             "Password" => facadesHash::make($request->Password),
@@ -57,12 +59,14 @@ class ShopkeepersController extends Controller
         ]);
         $user = Shopkeepers::where("UserName", "=", $request->UserName)->first();
         if ($user) {
-            if (FacadesHash::check($request->Password, $user->Password)) {
-                $request->session()->put("loginId", $user->ShopkeeperId);
-                return redirect("products")->with("success", "login successfully");
-            } else {
-                return back()->with("fail", "password not match");
-            }
+            // if (FacadesHash::check($request->Password, $user->Password)) {
+            //     $request->session()->put("loginId", $user->ShopkeeperId);
+
+            //     return redirect("products")->with("success", "login successfully");
+            // } else {
+            //     return back()->with("fail", "password not match");
+            // }
+            customHelper($request);
         } else {
             return back()->with("fail", "Username not registered");
         }

@@ -2,13 +2,22 @@
 @section('content')
     <div class="flex flex-col items-center justify-center py-28 gap-5">
         @if (session('success'))
-            <div class="alert alert-success">
+            <div class="alert-danger">
                 {{ session('success') }}
             </div>
-        @endif
-        @if (session('fail'))
-            <div class="alert alert-success">
+        @elseif (session('fail'))
+            <div class="alert-danger">
                 {{ session('fail') }}
+            </div>
+        @elseif (session('error'))
+            @foreach (session('error') as $error)
+            <div class="alert-danger">
+                {{ $error }}
+            </div>
+                
+            @endforeach
+            <div class="alert-danger">
+                {{ session('error') }}
             </div>
         @endif
 
@@ -30,11 +39,11 @@
             <div class="self-start flex gap-2 w-full">
                 <label for="">Confirm Password:</label>
                 <input type="password" name="Cpass" value="{{ old('Cpass') }}"
-                    class="outline-none border border-slate-500 rounded-md w-[96%]" required>
+                    class="outline-none border border-slate-500 rounded-md" required>
             </div>
             <input type="submit" value="Submit"
                 class="p-2 w-full bg-blue-400 text-white rounded-md cursor-pointer hover:bg-blue-500">
         </form>
-        <span>a Member? <a href="{{route('login')}}" class="text-blue-500">Log in</a></span>
+        <span>a Member? <a href="{{ route('login') }}" class="text-blue-500">Log in</a></span>
     </div>
 @endsection
