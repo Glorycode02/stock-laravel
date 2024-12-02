@@ -26,4 +26,8 @@ class Product_in extends Model
     {
         return $this->belongsTo(Products::class, 'ProductCode', 'ProductCode');
     }
+
+    protected $casts = [
+        'DateTime' => 'datetime'
+    ];
 }

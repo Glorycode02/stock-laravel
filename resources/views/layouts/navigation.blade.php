@@ -1,25 +1,45 @@
 <nav class="bg-gray-800 p-4 nav">
     <div class="container mx-auto px-5 flex justify-between">
-
         <a href="/" class="text-white font-bold text-lg">XY shop</a>
 
         <div class="flex space-x-4">
-            <a href="{{ route('products.index') }}" class="text-white hover:bg-gray-700 px-3 py-2 rounded-md">Products</a>
-            <a href="{{ route('product-in.index') }}" class="text-white hover:bg-gray-700 px-3 py-2 rounded-md">Stock In</a>
-            <a href="{{ route('product-out.index') }}" class="text-white hover:bg-gray-700 px-3 py-2 rounded-md">Stock Out</a>
-            <a href="{{ route('stock-report.index') }}" class="text-white hover:bg-gray-700 px-3 py-2 rounded-md">Report</a>
+            <a href="{{ route('dashboard') }}" 
+               class="text-white px-3 py-2 rounded-md {{ request()->routeIs('dashboard') ? 'bg-gray-700' : 'hover:bg-gray-700' }}">
+                Dashboard
+            </a>
+            
+            <a href="{{ route('products.index') }}" 
+               class="text-white px-3 py-2 rounded-md {{ request()->routeIs('products.*') ? 'bg-gray-700' : 'hover:bg-gray-700' }}">
+                Products
+            </a>
+            
+            <a href="{{ route('product-in.index') }}" 
+               class="text-white px-3 py-2 rounded-md {{ request()->routeIs('product-in.*') ? 'bg-gray-700' : 'hover:bg-gray-700' }}">
+                Stock In
+            </a>
+            
+            <a href="{{ route('product-out.index') }}" 
+               class="text-white px-3 py-2 rounded-md {{ request()->routeIs('product-out.*') ? 'bg-gray-700' : 'hover:bg-gray-700' }}">
+                Stock Out
+            </a>
+            
+            <a href="{{ route('stock-report.index') }}" 
+               class="text-white px-3 py-2 rounded-md {{ request()->routeIs('stock-report.*') ? 'bg-gray-700' : 'hover:bg-gray-700' }}">
+                Report
+            </a>
         </div>
 
-        <div class="w-10 h-10 rounded-full flex items-center justify-center relative group">
-            <label>
-                <span class="text-xl text-white cursor-pointer">🤖</span>
-            </label>
-
-            <div class="absolute top-10 left-0 bg-gray-800 p-2 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <form action="{{ route('logout') }}" method="post">
+        <div class="relative group">
+            <button class="text-white focus:outline-none">
+                <span class="text-xl">🤖</span>
+                <span class="ml-2">{{ $shopkeeper->UserName }}</span>
+            </button>
+            
+            <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden group-hover:block">
+                <form action="{{ route('logout') }}" method="POST" class="block w-full">
                     @csrf
-                    <button type="submit" class="text-white">
-                        Logout ({{ ucfirst(explode(' ', $shopkeeper->UserName)[0]) }})
+                    <button type="submit" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
+                        Logout
                     </button>
                 </form>
             </div>

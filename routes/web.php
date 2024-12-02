@@ -5,11 +5,13 @@ use App\Http\Controllers\ProductOutController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ShopkeepersController;
 use App\Http\Controllers\StockReportController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', [DashboardController::class, 'index'])
+    ->name('dashboard');
 
-// Route::resource('auth', ShopkeepersController::class);
-Route::get('/',[ ProductsController::class, 'index']);
+// Route::get('/',[ ProductsController::class, 'index']);
 Route::resource('products', ProductsController::class);
 Route::resource('product-out', ProductOutController::class);
 Route::resource('product-in', ProductInController::class);

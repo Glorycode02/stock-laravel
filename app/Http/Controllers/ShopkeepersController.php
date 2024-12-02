@@ -59,14 +59,14 @@ class ShopkeepersController extends Controller
         ]);
         $user = Shopkeepers::where("UserName", "=", $request->UserName)->first();
         if ($user) {
-            // if (FacadesHash::check($request->Password, $user->Password)) {
-            //     $request->session()->put("loginId", $user->ShopkeeperId);
+            if (FacadesHash::check($request->Password, $user->Password)) {
+                $request->session()->put("loginId", $user->ShopkeeperId);
 
-            //     return redirect("products")->with("success", "login successfully");
-            // } else {
-            //     return back()->with("fail", "password not match");
-            // }
-            customHelper($request);
+                // customHelper($request);
+                return redirect("/")->with("success", "login successfully");
+            } else {
+                return back()->with("fail", "password not match");
+            }
         } else {
             return back()->with("fail", "Username not registered");
         }

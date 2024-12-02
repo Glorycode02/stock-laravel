@@ -16,7 +16,7 @@
     </style>
     @vite('resources/css/app.css')
 </head>
-<body class="bg-white">
+<body class="bg-white overflow-ellipsis">
     @if (session()->exists('loginId'))
     <header class="">
         <div class="container mx-auto">
