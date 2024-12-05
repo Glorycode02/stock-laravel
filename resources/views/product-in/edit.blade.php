@@ -3,45 +3,68 @@
 @section('title', 'Edit Product In')
 
 @section('content')
-<h1 class="font-bold text-center text-xl">Edit Product In</h1>
+<div class="max-w-4xl mx-auto mt-8">
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold text-gray-800">Edit Product In</h1>
+        <a href="{{ route('product-in.index') }}" class="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+            </svg>
+            Back to Product In List
+        </a>
+    </div>
 
-<!-- Loader -->
-<div id="loader" class="loader"></div>
+    <!-- Loader -->
+    <div id="loader" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
+        <div class="loader border-t-4 border-blue-500 w-12 h-12 rounded-full animate-spin"></div>
+    </div>
 
-<a href="{{ route('product-in.index') }}" class="p-2 bg-gray-800 rounded-md text-white">Back to Product In List</a>
+    <!-- Form -->
+    <div class="bg-white shadow-md rounded-lg p-8">
+        <form id="productInForm" action="{{ route('product-in.update', $productIn->id) }}" method="POST" class="space-y-6">
+            @csrf
+            @method('PUT')
 
-<div class="flex justify-center">
-    <form id="productInForm" action="{{ route('product-in.update', $productIn->id) }}" method="POST" class="border border-slate-900 shadow-md rounded-md p-4 w-1/2 flex gap-5 flex-col">
-        @csrf
-        @method('PUT')
+            <!-- Product Code -->
+            <div>
+                <label for="ProductCode" class="block text-sm font-medium text-gray-700">Product Code</label>
+                <input type="text" name="ProductCode" id="ProductCode"
+                    value="{{ old('ProductCode', $productIn->ProductCode) }}" readonly
+                    class="mt-1 block w-full bg-gray-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
 
-        <div>
-            <label for="ProductCode">Product Code:</label>
-            <input type="text" name="ProductCode" id="ProductCode" value="{{ old('ProductCode', $productIn->ProductCode) }}" required class="w-60 bg-none rounded-md px-2 border border-slate-400 outline-none" readonly>
-        </div>
+            <!-- Date -->
+            <div>
+                <label for="DateTime" class="block text-sm font-medium text-gray-700">Date</label>
+                <input type="datetime-local" name="DateTime" id="DateTime"
+                    value="{{ old('DateTime', $productIn->DateTime) }}" required
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
 
-        <div>
-            <label for="DateTime">Date:</label>
-            <input type="datetime-local" name="DateTime" id="DateTime" value="{{ old('DateTime', $productIn->DateTime) }}" required class="w-60 bg-none rounded-md px-2 border border-slate-400 outline-none">
-        </div>
+            <!-- Quantity -->
+            <div>
+                <label for="Quantity" class="block text-sm font-medium text-gray-700">Quantity</label>
+                <input type="number" name="Quantity" id="Quantity"
+                    value="{{ old('Quantity', $productIn->Quantity) }}" required
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
 
-        <div>
-            <label for="Quantity">Quantity:</label>
-            <input type="number" name="Quantity" id="Quantity" value="{{ old('Quantity', $productIn->Quantity) }}" required class="w-60 bg-none rounded-md px-2 border border-slate-400 outline-none">
-        </div>
+            <!-- Unit Price -->
+            <div>
+                <label for="UnitPrice" class="block text-sm font-medium text-gray-700">Unit Price</label>
+                <input type="number" step="0.01" name="UnitPrice" id="UnitPrice"
+                    value="{{ old('UnitPrice', $productIn->UnitPrice) }}" required
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
 
-        <div>
-            <label for="UnitPrice">Unit Price:</label>
-            <input type="number" step="0.01" name="UnitPrice" id="UnitPrice" value="{{ old('UnitPrice', $productIn->UnitPrice) }}" required class="w-60 bg-none rounded-md px-2 border border-slate-400 outline-none">
-        </div>
-
-        <div>
-            <button type="submit" class="bg-gray-900 p-4 w-full rounded-md text-white">Update Product In</button>
-        </div>
-    </form>
+            <!-- Submit Button -->
+            <div class="pt-6">
+                <button type="submit" class="w-full bg-indigo-600 text-white font-semibold px-4 py-2 rounded-md hover:bg-indigo-700 transition">
+                    Update Product In
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
-
-<div>
-</div>
-
 @endsection

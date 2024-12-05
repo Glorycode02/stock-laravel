@@ -1,49 +1,62 @@
 @extends('layouts.app')
+
 @section('content')
-    <div class="flex flex-col items-center justify-center py-28 gap-5">
-        @if (session('success'))
-            <div class="alert-danger">
-                {{ session('success') }}
-            </div>
-        @elseif (session('fail'))
-            <div class="alert-danger">
-                {{ session('fail') }}
-            </div>
-        @elseif (session('error'))
-            @foreach (session('error') as $error)
-            <div class="alert-danger">
-                {{ $error }}
-            </div>
-                
-            @endforeach
-            <div class="alert-danger">
-                {{ session('error') }}
-            </div>
+<div class="min-h-screen flex flex-col items-center pt-6 sm:pt-0">
+    <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden rounded-lg">
+        <h1 class="text-3xl font-bold text-center text-indigo-600 mb-8">Create Account</h1>
+
+        @if(Session::has('fail'))
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <span class="block sm:inline">{{ Session::get('fail') }}</span>
+        </div>
         @endif
 
-        <h1 class="text-slate-900 font-bold">XYShop-Register</h1>
-        <form action="{{ route('store') }}" method="post"
-            class="flex flex-col items-center border border-slate-900 shadow-md rounded-md p-10 w-1/3 gap-4">
+        @if(Session::has('success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <span class="block sm:inline">{{ Session::get('success') }}</span>
+        </div>
+        @endif
+
+        <form action="{{ route('store') }}" method="post" class="space-y-6">
             @csrf
-            @Method('POST')
-            <div class="self-start flex gap-2 w-full">
-                <label for="">UserName:</label>
+            <div>
+                <label for="UserName" class="block text-sm font-medium text-gray-700">Username</label>
                 <input type="text" name="UserName" value="{{ old('UserName') }}"
-                    class="outline-none border border-slate-500 rounded-md w-full" required>
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    required>
+                <span class="text-red-500 text-xs">@error('UserName') {{ $message }} @enderror</span>
             </div>
-            <div class="self-start flex gap-2 w-full">
-                <label for="">Password:</label>
-                <input type="password" name="Password" value="{{ old('Password') }}"
-                    class="outline-none border border-slate-500 rounded-md w-full" required>
+
+            <div>
+                <label for="Password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" name="Password"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    required>
+                <span class="text-red-500 text-xs">@error('Password') {{ $message }} @enderror</span>
             </div>
-            <div class="self-start flex gap-2 w-full">
-                <label for="">Confirm Password:</label>
-                <input type="password" name="Cpass" value="{{ old('Cpass') }}"
-                    class="outline-none border border-slate-500 rounded-md" required>
+
+            <div>
+                <label for="Cpass" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                <input type="password" name="Cpass"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    required>
+                <span class="text-red-500 text-xs">@error('Cpass') {{ $message }} @enderror</span>
             </div>
-            <input type="submit" value="Submit"
-                class="p-2 w-full bg-blue-400 text-white rounded-md cursor-pointer hover:bg-blue-500">
+
+            <div>
+                <button type="submit"
+                    class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Register
+                </button>
+            </div>
         </form>
-        <span>a Member? <a href="{{ route('login') }}" class="text-blue-500">Log in</a></span>
+
+        <p class="mt-6 text-center text-sm text-gray-600">
+            Already have an account?
+            <a href="{{ route('login') }}" class="font-medium text-indigo-600 hover:text-indigo-500">
+                Sign in
+            </a>
+        </p>
     </div>
+</div>
 @endsection
