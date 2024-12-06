@@ -5,7 +5,7 @@
     <!-- Summary Cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <!-- Total Stock In Card -->
-        <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-500">
+        <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-pink-500">
             <h3 class="text-gray-600 text-sm font-medium mb-2">Total Stock In</h3>
             <p class="text-xl font-semibold text-gray-800">{{ number_format($totalStockStats['totalProductsIn']) }}</p>
             <p class="text-sm text-gray-500 mt-2">Total Value: ${{ number_format($totalStockStats['totalStockValueIn'], 2) }}</p>

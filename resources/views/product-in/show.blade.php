@@ -9,7 +9,6 @@
         <strong>Product Code:</strong> {{ $productIn->ProductCode }}<br>
         <strong>Product Name:</strong> {{ $productIn->product->ProductName }}<br>
         <strong>Date:</strong> {{ $productIn->DateTime }}<br>
-        <strong>Quantity:</strong> {{ $productIn->Quantity }}<br>
         <strong>Unit Price:</strong> ${{ number_format($productIn->UnitPrice, 2) }}<br>
         <strong>Total Price:</strong> ${{ number_format($productIn->TotalPrice, 2) }}<br>
     </div>
